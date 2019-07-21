@@ -2,6 +2,7 @@
 # 7-20-19
 # Prog 260
 # Linked List
+# Git Commit?
 
 class Node:
     def __init__(self, data = None):
