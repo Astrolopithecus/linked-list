@@ -123,8 +123,7 @@ class LinkedList:
                     index += 1
                     curr = curr.next
         if (not found): 
-            # raise an exception
-            raise KeyError("Data not found in list")
+            return -1
         else:
             return index
 
@@ -142,19 +141,21 @@ class LinkedList:
          #    - when pos = 0
          #    - when pos = self.size()-1 
          #    - and of course in all other valid values of pos
+        if (pos < 0):
+            raise IndexError ('Index out of range')
+        if (pos >= (self.size())):
+            raise IndexError ('Index out of range')
         temp = Node(data)
         current = self.head
         previous = None
         count = 0
         found = False
-        if pos > self.size-1:
-            raise IndexError ('Index out of range')
         while current is not None and not found:
-            if count == index:
+            if (count == pos):
                 found = True
             else:
                 previous = current
-                current = current.next()
+                current = current.next
                 count +=1
         if previous is None:
             temp.next = self.head
@@ -176,16 +177,18 @@ class LinkedList:
          #    - when pos = 0
          #    - when pos = self.size()-1 
          #    - and of course in all other valid values of pos
-        if pos > self.size-1 or pos <0:
-             raise IndexError('Index out of range')
+        if (pos < 0):
+            raise IndexError ('Index out of range')
+        if (pos >= (self.size())):
+            raise IndexError ('Index out of range')
         current = self.head
         previous = None
         found = False
         if current:
             count = 0
             while current.next is not None and not found:
-                if count == index:
-                    found == True
+                if (count == pos):
+                    found = True
                 else:
                     previous = current
                     current = current.next
